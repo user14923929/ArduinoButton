@@ -1,7 +1,7 @@
 #include <ArduinoButton.h>
 ArduinoButton button;
 
-void void setup() {
+void setup() {
     button.init(2);
     pinMode(13, OUTPUT);
 }
