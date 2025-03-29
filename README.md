@@ -4,9 +4,8 @@ The `ArduinoButton` library provides a simple interface for working with buttons
 
 ## Features
 
-- Initialize a button with a specified pin.
-- Check if the button is pressed.
-- Check if the button is released.
+- Simple API for button handling.
+- Supports internal pull-up resistors.
 
 ## Installation
 
@@ -15,29 +14,22 @@ The `ArduinoButton` library provides a simple interface for working with buttons
 
 ## Usage
 
-Include the library in your Arduino sketch:
-
-```cpp
-#include <ArduinoButton.h>
-```
-
 ### Example
 
 ```cpp
 #include <ArduinoButton.h>
 
-ArduinoButton button;
+ArduinoButton button(2); // Initialize button on pin 2
 
 void setup() {
-    button.init(2); // Initialize button on pin 2
+    button.begin(); // Configure the button pin
     Serial.begin(9600);
 }
 
 void loop() {
     if (button.isPressed()) {
         Serial.println("Button is pressed!");
-    }
-    if (button.isReleased()) {
+    } else if (button.isReleased()) {
         Serial.println("Button is released!");
     }
 }
@@ -45,13 +37,26 @@ void loop() {
 
 ## API Reference
 
-### `void init(int pin)`
-Initializes the button on the specified pin. The pin is set to `INPUT_PULLUP` mode.
+### Constructor
 
-### `bool isPressed()`
+```cpp
+ArduinoButton(int pin);
+```
+
+- **`pin`**: The pin number where the button is connected.
+
+### Methods
+
+#### `void begin()`
+
+Initializes the button pin as an input with an internal pull-up resistor.
+
+#### `bool isPressed()`
+
 Returns `true` if the button is pressed, `false` otherwise.
 
-### `bool isReleased()`
+#### `bool isReleased()`
+
 Returns `true` if the button is released, `false` otherwise.
 
 ## License

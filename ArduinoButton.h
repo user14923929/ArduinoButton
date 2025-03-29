@@ -1,6 +1,7 @@
 class ArduinoButton {
     public:
-        void init(int pin);
+        ArduinoButton(int pin);
+        void begin();
         bool isPressed();
         bool isReleased();
     private:
