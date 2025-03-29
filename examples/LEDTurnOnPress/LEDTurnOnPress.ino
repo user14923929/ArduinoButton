@@ -1,8 +1,8 @@
 #include <ArduinoButton.h>
-ArduinoButton button;
+ArduinoButton button(2);
 
 void setup() {
-    button.init(2);
+    button.begin();
     pinMode(13, OUTPUT);
 }
 
